@@ -12,7 +12,7 @@ URL = 'https://github.com/mohit2152sharma/aqad-utilities/'
 EMAIL = 'mohitsharma@alumni.iitm.ac.in'
 AUTHOR = 'Mohit Sharma'
 REQUIRES_PYTHON = '>=3.6.0'
-VERSION = '0.1.0'
+VERSION = '0.1.1'
 
 # What packages are required for this module to be executed?
 REQUIRED = [
@@ -74,7 +74,8 @@ class UploadCommand(Command):
             pass
 
         self.status('Building Source and Wheel (universal) distribution…')
-        os.system('{0} setup.py sdist bdist_wheel --universal'.format(sys.executable))
+        os.system(
+            '{0} setup.py sdist bdist_wheel --universal'.format(sys.executable))
 
         self.status('Uploading the package to PyPI via Twine…')
         os.system('twine upload dist/*')
@@ -97,13 +98,14 @@ setup(
     author_email=EMAIL,
     python_requires=REQUIRES_PYTHON,
     url=URL,
-    #packages=find_packages(exclude=["tests", "*.tests", "*.tests.*", "tests.*"]),
+    packages=find_packages(
+        exclude=["tests", "*.tests", "*.tests.*", "tests.*"]),
     # If your package is a single module, use this instead of 'packages':
-    py_modules=['twitter_utilities'],
+    # py_modules=['twitter_utilities'],
 
-    # entry_points={
-    #     'console_scripts': ['mycli=mymodule:cli'],
-    # },
+    # # entry_points={
+    # #     'console_scripts': ['mycli=mymodule:cli'],
+    # # },
     install_requires=REQUIRED,
     extras_require=EXTRAS,
     include_package_data=True,

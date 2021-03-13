@@ -1,6 +1,0 @@
-README.md
-setup.py
-aqad_utilities.egg-info/PKG-INFO
-aqad_utilities.egg-info/SOURCES.txt
-aqad_utilities.egg-info/dependency_links.txt
-aqad_utilities.egg-info/top_level.txt

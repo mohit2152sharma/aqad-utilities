@@ -26,8 +26,9 @@ def _language(code: str) -> str:
         language = re.search("^ *\w+?\n", code, re.S).group(0).strip()
     except:
         raise ValueError("Language type not found")
-    
+
     return language
+
 
 def find_n_replace_code(text: str, pattern: str = "(?<=```)(.*?)(?=```)", replacement: str = "see_image") -> str:
     """
@@ -97,7 +98,7 @@ def text_to_tweets(text: str, hashtags: list = None):
             str_to_append += "#" + hashtag + " "
 
     timestamp = datetime.now().strftime("%d%m%Y%H%M%S")
-    str_to_append += f"[{timestamp}]"
+    str_to_append += f"TimeStamp:[{timestamp}]"
 
     threshold = 280 - len(str_to_append) - 1
 
@@ -111,10 +112,12 @@ def text_to_tweets(text: str, hashtags: list = None):
         else:
             tweets.append(word)
 
-    for i in range(len(tweets)):
-        tweets[i] = tweets[i] + " " + str_to_append
+    tweets_list = []
+    for tweet in tweets:
+        t = tweet + " " + str_to_append
+        tweets_list.append(t.strip())
 
-    return tweets
+    return tweets_list
 
 
 def submitted_by(name: str) -> str:
@@ -125,5 +128,3 @@ def submitted_by(name: str) -> str:
         a string with twitter handle appened
     """
     return f"The tweet was submitted by @{name}"
-
-
