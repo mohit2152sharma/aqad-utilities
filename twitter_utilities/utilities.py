@@ -98,7 +98,7 @@ def text_to_tweets(text: str, hashtags: list = None):
             str_to_append += "#" + hashtag + " "
 
     timestamp = datetime.now().strftime("%d%m%Y%H%M%S")
-    str_to_append += f"TimeStamp:[{timestamp}]"
+    str_to_append += f"[TimeStamp:{timestamp}]"
 
     threshold = 280 - len(str_to_append) - 1
 
