@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: aqad-utilities
+Version: 0.1.0
+Summary: Utility package for aqad
+Home-page: https://github.com/mohit2152sharma/aqad-utilities/
+Author: Mohit Sharma
+Author-email: mohitsharma@alumni.iitm.ac.in
+License: MIT
+Description: 
+        # aqad-utilities
+        
+        [![Testing aqad-utilities](https://github.com/mohit2152sharma/aqad-utilities/actions/workflows/python-package-testing.yml/badge.svg)](https://github.com/mohit2152sharma/aqad-utilities/actions/workflows/python-package-testing.yml)
+        
+        A utilities package for A Question A Day (aqad). This package contains the function for splitting text within twitter character limit, some functions for extracting code from text.    
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Requires-Python: >=3.6.0
+Description-Content-Type: text/markdown
