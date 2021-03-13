@@ -33,7 +33,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         python -m pip install flake8 pytest
-        IF EXIST "requirements.txt" ( 
+        IF (Test-Path "requirements.txt" -PathType leaf) ( 
           ECHO "requirements.txt exists"
           pip install -r requirements.txt 
         )
