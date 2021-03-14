@@ -49,7 +49,9 @@ test1 = (
     ```""",
     ["r"],
     ["""x = 1
-    type(x)"""]
+    type(x)"""],
+    """In R what would be the output of following?
+ [see_image:1]"""
 )
 
 test2 = (
@@ -58,12 +60,13 @@ test2 = (
     x = 1
     type(x)
     python
-    ```
-    Additional String""",
+    ```Additional String""",
     ["python"],
     ["""x = 1
     type(x)
-    python"""]
+    python"""],
+    """In python what would be the output of following?
+ [see_image:1] Additional String"""
 )
 
 test3 = (
@@ -75,7 +78,10 @@ test3 = (
     y = 1
     ```""",
     ["r", "r"],
-    ["x = 1", "y = 1"]
+    ["x = 1", "y = 1"],
+    """In R, which of the following code example would throw an error
+ [see_image:1] 
+ [see_image:2]"""
 )
 
 test4 = (
@@ -90,16 +96,21 @@ test4 = (
     option 3
     ```   python
     x=4
-    ```
-    Adding some more boilerplate text to exceed the test limit of 280. All the above three
-    examples would not throw an error when they are run in python""",
+    ```Adding some more boilerplate text to exceed the test limit of 280. All the above three examples would not throw an error when they are run in python""",
     ["python", "python", "python"],
-    ["x = 1", "x = 2", "x=4"]
+    ["x = 1", "x = 2", "x=4"],
+
+    """In python which of the following would throw an error?
+ [see_image:1] 
+ option 2
+ [see_image:2] 
+ option 3
+     [see_image:3] Adding some more boilerplate text to exceed the test limit of 280. All the above three examples would not throw an error when they are run in python""",
 )
 
 
 @pytest.mark.parametrize(
-    ["text", "code_language", "code_text"],
+    ["text", "code_language", "code_text", "modified_text"],
     [
         test1,
         test2,
@@ -107,10 +118,12 @@ test4 = (
         test4
     ]
 )
-def test_find_n_replace_code(text, code_language, code_text):
+def test_find_n_replace_code(text, code_language, code_text, modified_text):
     result = find_n_replace_code(text)
     result_text = result['text']
     result_code_info = result['code_info']
+
+    assert result_text == modified_text
 
     counter = len(result_code_info)
     for i in range(counter):

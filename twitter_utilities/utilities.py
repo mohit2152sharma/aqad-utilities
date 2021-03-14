@@ -48,7 +48,8 @@ def find_n_replace_code(text: str, pattern: str = "(?<=```)(.*?)(?=```)", replac
             "text": original_replaced_text [see_image_1],
             "code_info": [{
                 "language": programming_language,
-                "code": code_text
+                "code_text": code_text,
+                'sno': sno
             }]
         }
     """
@@ -74,10 +75,10 @@ def find_n_replace_code(text: str, pattern: str = "(?<=```)(.*?)(?=```)", replac
         counter += 1
 
     text = text.replace("```", " ")
-    text = re.sub(" +", "", text, re.S)
+    text = re.sub(" +", " ", text, re.S)
 
     return {
-        "text": text,
+        "text": text.strip(),
         "code_info": code_info
     }
 
