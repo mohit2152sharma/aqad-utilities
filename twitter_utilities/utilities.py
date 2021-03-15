@@ -108,6 +108,7 @@ def text_to_tweets(text: str, hashtags: list = None):
     tweets = [""]
     for word in words:
         text = tweets[-1]
+        word = word.strip()
         if len(" ".join([text, word])) <= threshold:
             tweets[-1] = " ".join([text, word])
         else:
@@ -115,7 +116,7 @@ def text_to_tweets(text: str, hashtags: list = None):
 
     tweets_list = []
     for tweet in tweets:
-        t = tweet + " " + str_to_append
+        t = tweet + r"\n" + str_to_append
         tweets_list.append(t.strip())
 
     return tweets_list
